@@ -1,3 +1,3 @@
 [build]
-  command = "node app.js" # Replace with your Node.js entry point
-  functions = "lambda" # Optional, only if you use serverless functions
+  command = "node app.js"
+  functions = "lambda"
