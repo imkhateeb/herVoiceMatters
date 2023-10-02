@@ -1,0 +1,190 @@
+.userMainBigDiv{
+    /* background-color: black; */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+.userBtns{
+    width: 15vw;
+}
+
+#userPageMainHeading{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#profilePic img{
+    width: 12vw;
+    height: 12vw;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.userDetailsDiv{
+    padding: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: auto;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+.userBtnDivs h1{
+    text-decoration: underline;
+
+}
+.userBtnDivs div{
+    display: flex;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 6px 0px;
+    padding: 10px;
+    /* align-items: center; */
+}
+
+
+.userBtnDivs div h5{
+    margin-right: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.1rem;
+
+}
+
+.userBtnDivs div h4{
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.1rem;
+
+}
+
+#complaintDetailsDiv div{
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+#complaintDetailsDiv div:hover{
+    transform: scale(1.05);
+    transition: transform 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.complaintBrief{
+    flex-direction: column;
+    justify-content: left;
+    align-items: normal;
+}
+.complaintBrief h5{
+    text-align: left;
+}
+
+.complaintBrief h4{
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 14px;
+    text-align: justify;
+}
+
+
+#adminDistrictHeading h1{
+    margin: 20px 0px;
+    padding: 6px 8px;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgb(144, 143, 143);
+    border: 1px solid rgb(144, 143, 143);
+    border-radius: 4px;
+    word-spacing: 6px;
+    letter-spacing: 2.5px;
+}
+#adminDistrictHeading h1:hover{
+    background-color: transparent;
+    border: 1px solid black;
+    color: white;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.cgov-small-divs, .sgov-small-divs, .priv-small-divs{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 10px auto;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.cgov-small-divs div, .sgov-small-divs div, .priv-small-divs div{
+    justify-content: left;
+    line-height: 5px;
+}
+
+.fullCGOVComplaintDiv, .fullSGOVComplaintDiv,.fullPRIVComplaintDiv{
+    flex-direction: column;
+    justify-content: left;
+    background-color: black;
+    color: white;
+}
+
+.fullCGOVComplaintDiv div, .fullSGOVComplaintDiv div, .fullPRIVComplaintDiv div{
+    justify-content: left;
+    line-height: 5px;
+    padding: 5px;
+    border: 1px solid white;
+}
+
+.complaintBrief p{
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2rem;
+    text-align: justify;
+}
+
+.currentCaseDivType{
+    background-color: rgb(52, 52, 52);
+    flex-direction: column;
+    border: none;
+    border-radius: 4px;
+}
+.currentCaseDivType h1{
+    color: rgb(238, 229, 212);
+}
+
+#changePassBtn, #showSecretKey {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(228, 192, 198);
+    cursor: pointer;
+}
+
+.change-pass-div div{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+
+.change-pass-div div input{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(224, 210, 212);
+    cursor: pointer;
+    outline: none;
+}
+
+.change-pass-div button{
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(228, 192, 198);
+    cursor: pointer;
+    margin-left: 10px;
+}

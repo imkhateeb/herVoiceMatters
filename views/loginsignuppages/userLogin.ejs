@@ -1,0 +1,23 @@
+<%- include("../partials/navigationleft") -%>
+    <div class="pageMainDiv width-40">
+        <h2>USER - LOGIN</h2>
+        <div id="userSignupFormDiv">
+            <p style="color: rgb(21, 0, 255);"><%= existingUserMessage %></p>
+            <form action="/user-login" method="POST">
+                <div class="loginsignupinputDiv">
+                    <label for="email">Enter email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" placeholder="Enter password" required>
+                </div>
+                <div class="loginsignupBtns loginsignupinputDiv">
+                    <button type="submit">Log in</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+            <p>New user? <a href="/user-signup">Signup here</a></p>
+        </div>
+    </div>
+<%- include("../partials/jqueryandfooter") -%>

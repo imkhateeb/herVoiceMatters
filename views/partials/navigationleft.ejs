@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>herVoiceMatters - A STATE WEB PORTAL</title>
+    <link rel="stylesheet" href="CSS/utility.css" type="text/css">
+    <link rel="stylesheet" href="CSS/home.css" type="text/css">
+    <link rel="stylesheet" href="CSS/idpages.css" type="text/css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Roboto&family=Ubuntu&display=swap');
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #superContainer {
+        /* width: 100vw; */
+        min-height: 100vh;
+        display: flex;
+        background: rgb(228,182,225);
+background: linear-gradient(90deg, rgba(228,182,225,1) 0%, rgba(134,57,134,1) 30%, rgba(231,161,229,1) 100%);
+    }
+
+    .logoImage{
+        width: 150px;
+    }
+</style>
+
+<body>
+    <div id="superContainer">
+        <div id="navigationContainer">
+            <div id="navigationHeading">
+                <img src="images/logo.png" alt="Logo" class="logoImage">
+                <h4>HER VOICE MATTERS</h4>
+            </div>
+            <div id="complaintNavigations">
+                <button id="toggleLoginType" class="navBtn">Login / Signup</button>
+                <div id="toggleLoginDiv" class="ToggleDiv">
+                    <a href="/user-login"><p>User login</p></a>
+                    <a href="/admin-login"><p>Admin login</p></a>
+                    <a href="/super-admin-login"><p> Super admin login</p></a>
+                    <a href="/user-signup"><p> User signup</p></a>
+                </div>
+                <button id="toggleComplaintType" class="navBtn">Lodge your complaint</button>
+                <div id="complaintToggleDiv" class="ToggleDiv">
+                    <a href="/cgov-complaint">
+                        <p> Central government employee</p>
+                    </a>
+                    <a href="/sgov-complaint">
+                        <p> State government employee</p>
+                    </a>
+                    <a href="/priv-complaint">
+                        <p> Private employee</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="/"><button id="complaintStatusBtn" class="navBtn">Check your complaint Status</button></a>
+                </div>
+                <div id="ourChatbot">
+                    <a href="/"><button class="navBtn">Chat with Angel Priya</button></a>
+                </div>
+            </div>
+
+            
+
+            <div id="importantLinks">
+                <h3>Know about : </h3>
+                <span><a href="/">Laws regarding sexual harrasment at work place</a></span>
+                <span><a href="/">Authority for women</a></span>
+                <span><a href="/">Guidance</a></span>
+            </div>
+
+
+            <div id="footer">
+
+
+
+            </div>
+            <a href="/admin-signup">Admin signup</a>
+        </div>
+        <div id="pagesContainer">

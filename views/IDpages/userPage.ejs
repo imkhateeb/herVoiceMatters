@@ -1,0 +1,429 @@
+<%- include("../partials/navigationleft") -%>
+
+  <div id="userPageMainHeading">
+    <div id="profilePic">
+      <img src=<%=profilePath %> alt="DP">
+    </div>
+    <div id="homeHeading">
+      <h1>Hello <%= userName %>,</h1>
+      <div>
+        <span>
+          <h2>Welcome to your profile</h2>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <p style="color:rgb(246, 211, 169); margin: 10px 0px;">
+    <%= userPageMessage %>
+  </p>
+  <div class="userMainBigDiv" style="width: 60vw; margin: auto;">
+    <div class="btnsDiv" style="width: 30%;">
+      <button class="navBtn userBtns" id="personalDetails">Personal details</button>
+      <button class="navBtn userBtns" id="secAndPass">Privacy and security</button>
+      <button class="navBtn userBtns" id="complaintDetails">Complaint details</button>
+      <button class="navBtn userBtns" id="complaintStatus">Complaint Status</button>
+    </div>
+    <div class="userDetailsDiv" style="width: 65%">
+      <div class="userBtnDivs" id="defaultUserDiv">
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, et?</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reiciendis obcaecati quasi ipsam
+          facilis vel perferendis, nostrum provident recusandae eius ab eaque odit, nulla quis? Blanditiis
+          culpa temporibus nemo, incidunt, voluptatem unde adipisci doloribus illum facere facilis eveniet
+          dolorum atque aperiam molestiae beatae dicta suscipit, eum quisquam quidem dignissimos natus? Lorem
+          ipsum dolor sit amet, consectetur adipisicing elit. Amet quia veritatis iste consequuntur corporis.
+          Assumenda veritatis, porro dolore id cumque eaque. Vero ipsum id dignissimos velit debitis beatae
+          laborum odio quas labore corrupti distinctio autem perspiciatis iure omnis, officia facilis.</p>
+      </div>
+      <div style="display: none;" id="personalDetailsDiv" class="userBtnDivs">
+        <h1>Your personal details</h1>
+        <div>
+          <h5>Name :</h5>
+          <h4>
+            <%= userName %>
+          </h4>
+        </div>
+        <div>
+          <h5>Birthday :</h5>
+          <h4>
+            <%= birthDay %>
+          </h4>
+        </div>
+        <div>
+          <h5>Your favourite pet :</h5>
+          <h4>
+            <%= favPet %>
+          </h4>
+        </div>
+      </div>
+      <div style="display: none;" id="secAndPassDiv" class="userBtnDivs">
+        <h1>Security and password</h1>
+        <div>
+          <h5>Email :</h5>
+          <h4>
+            <%= userEmail %>
+          </h4>
+        </div>
+        <button id="changePassBtn">Change password</button>
+        <div id="changePassDiv" style="display: none;">
+          <form action="/user/change-password" method="post" class="change-pass-div">
+            <div>
+              <label for="youremail">Enter your email</label>
+              <input type="email" id="youremail" name="youremail">
+            </div>
+            <div>
+              <label for="newpass">Enter new password</label>
+              <input type="password" id="newpass" name="newpass">
+            </div>
+            <button type="submit">Change password</button>
+          </form>
+        </div>
+      </div>
+      <div style="display: none;" id="complaintDetailsDiv" class="userBtnDivs">
+        <h1>Your complaint details</h1>
+        <% if ( complaintDetails[0]==null && complaintDetails[1]==null && complaintDetails[2]==null ){ %>
+          <h4>You have not complaint yet</h4>
+          <% } else { %>
+            <% if ( complaintDetails[0] !=null ){ %>
+              <% const com=complaintDetails[0] %>
+                <h2>Central government employee</h2>
+                <div>
+                  <h5>Name :</h5>
+                  <h4>
+                    <%= com.fullName %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Designation :</h5>
+                  <h4>
+                    <%= com.Designation %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Contact number :</h5>
+                  <h4>
+                    <%= com.contactNo %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Email ID :</h5>
+                  <h4>
+                    <%= com.eMail %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Aadhar No :</h5>
+                  <h4>
+                    <%= com.aadharNo %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>State :</h5>
+                  <h4>
+                    <%= com.State %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>District :</h5>
+                  <h4>
+                    <%= com.District %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Ministry :</h5>
+                  <h4>
+                    <%= com.organizationName %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Accused name(s) :</h5>
+                  <h4>
+                    <%= com.accusedName %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Accused department(s):</h5>
+                  <h4>
+                    <%= com.accusedDepartment %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Accused designation(s):</h5>
+                  <h4>
+                    <%= com.accusedDesignation %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Your relation with the accused:</h5>
+                  <h4>
+                    <%= com.accusedRelation %>
+                  </h4>
+                </div>
+                <div>
+                  <h5>Have you complaint to the ICC:</h5>
+                  <h4>
+                    <%= com.complaintToICC %>
+                  </h4>
+                </div>
+                <div class="complaintBrief">
+                  <h5>Brief about the complaint:</h5>
+                  <h4>
+                    <%= com.complaintDescription %>
+                  </h4>
+                </div>
+                <% } else if ( complaintDetails[1] !=null ){ %>
+                  <% const com=complaintDetails[1] %>
+                    <h2>State government employee</h2>
+                    <div>
+                      <h5>Name :</h5>
+                      <h4>
+                        <%= com.fullName %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Designation :</h5>
+                      <h4>
+                        <%= com.Designation %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Contact number :</h5>
+                      <h4>
+                        <%= com.contactNo %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Email ID :</h5>
+                      <h4>
+                        <%= com.eMail %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Aadhar No :</h5>
+                      <h4>
+                        <%= com.aadharNo %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>State :</h5>
+                      <h4>
+                        <%= com.State %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>District :</h5>
+                      <h4>
+                        <%= com.District %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Accused name(s) :</h5>
+                      <h4>
+                        <%= com.accusedName %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Accused department(s):</h5>
+                      <h4>
+                        <%= com.accusedDepartment %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Accused designation(s):</h5>
+                      <h4>
+                        <%= com.accusedDesignation %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Your relation with the accused:</h5>
+                      <h4>
+                        <%= com.accusedRelation %>
+                      </h4>
+                    </div>
+                    <div>
+                      <h5>Have you complaint to the ICC:</h5>
+                      <h4>
+                        <%= com.complaintToICC %>
+                      </h4>
+                    </div>
+                    <div class="complaintBrief">
+                      <h5>Brief about the complaint:</h5>
+                      <h4>
+                        <%= com.complaintDescription %>
+                      </h4>
+                    </div>
+                    <% }else { %>
+                      <% const com=complaintDetails[2] %>
+                        <h2>Private employee</h2>
+
+                        <div>
+                          <h5>Name :</h5>
+                          <h4>
+                            <%= com.fullName %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Designation :</h5>
+                          <h4>
+                            <%= com.Designation %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Contact number :</h5>
+                          <h4>
+                            <%= com.contactNo %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Email ID :</h5>
+                          <h4>
+                            <%= com.eMail %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Aadhar No :</h5>
+                          <h4>
+                            <%= com.aadharNo %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Working state :</h5>
+                          <h4>
+                            <%= com.state %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Working district :</h5>
+                          <h4>
+                            <%= com.district %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Organization name :</h5>
+                          <h4>
+                            <%= com.organizationName %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Organization contact :</h5>
+                          <h4>
+                            <%= com.organizationContact %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Organization Email :</h5>
+                          <h4>
+                            <%= com.organizationEmail %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Organization address :</h5>
+                          <h4>
+                            <%= com.organizationAddress %>
+                          </h4>
+                        </div>
+
+                        <div>
+                          <h5>Accused name(s) :</h5>
+                          <h4>
+                            <%= com.accusedName %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Accused department(s):</h5>
+                          <h4>
+                            <%= com.accusedDepartment %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Accused designation(s):</h5>
+                          <h4>
+                            <%= com.accusedDesignation %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Your relation with the accused:</h5>
+                          <h4>
+                            <%= com.accusedRelation %>
+                          </h4>
+                        </div>
+                        <div>
+                          <h5>Have you complaint to the ICC:</h5>
+                          <h4>
+                            <%= com.complaintToICC %>
+                          </h4>
+                        </div>
+                        <div class="complaintBrief">
+                          <h5>Brief about the complaint:</h5>
+                          <h4>
+                            <%= com.complaintDescription %>
+                          </h4>
+                        </div>
+                        <% } %>
+                          <% } %>
+      </div>
+      <div style="display: none;" id="complaintStatusDiv" class="userBtnDivs">
+        <h1>Security complaint status</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugiat ipsam saepe quo quam iusto
+          culpa aut nisi. Inventore accusamus iste officiis omnis mollitia aspernatur eaque necessitatibus
+          numquam? Atque, tenetur perspiciatis? Delectus modi explicabo officiis? Nostrum mollitia animi sint
+          praesentium dolorem magnam, rerum itaque unde, distinctio earum facere veritatis! Vero debitis amet
+          omnis iure voluptatum facilis sint corporis consectetur qui sequi pariatur similique quod temporibus
+          maiores, nam esse aut, error incidunt tempora quis illo. Quidem, accusamus! Facilis quia quasi iste?
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    $("#toggleComplaintType").on("click", (e) => {
+      $("#complaintToggleDiv").slideToggle();
+    })
+    $("#toggleLoginType").on("click", (e) => {
+      $("#toggleLoginDiv").slideToggle();
+    })
+    $("#personalDetails").on("click", (e) => {
+      $("#defaultUserDiv").css("display", "none");
+      $("#secAndPassDiv").css("display", "none");
+      $("#complaintDetailsDiv").css("display", "none");
+      $("#complaintStatusDiv").css("display", "none");
+      $("#personalDetailsDiv").slideDown(300);
+    })
+
+    $("#secAndPass").on("click", (e) => {
+      $("#defaultUserDiv").css("display", "none");
+      $("#personalDetailsDiv").css("display", "none");
+      $("#complaintDetailsDiv").css("display", "none");
+      $("#complaintStatusDiv").css("display", "none");
+      $("#secAndPassDiv").slideDown(300);
+    })
+
+    $("#complaintDetails").on("click", (e) => {
+      $("#defaultUserDiv").css("display", "none");
+      $("#secAndPassDiv").css("display", "none");
+      $("#personalDetailsDiv").css("display", "none");
+      $("#complaintStatusDiv").css("display", "none");
+      $("#complaintDetailsDiv").slideDown(300);
+    })
+
+    $("#complaintStatus").on("click", (e) => {
+      $("#defaultUserDiv").css("display", "none");
+      $("#secAndPassDiv").css("display", "none");
+      $("#personalDetailsDiv").css("display", "none");
+      $("#complaintDetailsDiv").css("display", "none");
+      $("#complaintStatusDiv").slideDown(300);
+    })
+
+    $("#changePassBtn").on("click", (e) => {
+      console.log(100);
+      $("#changePassDiv").slideToggle(300);
+    })
+
+  </script>
+  </body>
+
+  </html>

@@ -1,0 +1,125 @@
+<%- include("../partials/navigationleft") -%>
+    <div class="pageMainDiv width-40">
+        <h2>EMPLOYEE - PRIVATE</h2>
+        <div id="userSignupFormDiv">
+            <form action="/priv-complaint" method="POST">
+                <h3 class="h3-underline">Personal Details</h3>
+                <div class="loginsignupinputDiv">
+                    <label for="fullname">Name of complainant</label>
+                    <input type="text" name="fullname" id="fullname" autocomplete="off" placeholder="Enter full name"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="designation">Designation</label>
+                    <input type="text" name="designation" id="designation" autocomplete="off" placeholder="Designation"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="contact">Contact No</label>
+                    <input type="number" name="contact" id="contact" autocomplete="off"
+                        placeholder="Your contact number" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" autocomplete="off" placeholder="Your email ID" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="aadhar">Aadhar Number</label>
+                    <input type="number" name="aadhar" id="aadhar" autocomplete="off" placeholder="Your aadhar number"
+                        required>
+                </div>
+                
+
+                <h3 class="h3-underline">Organization details</h3>
+
+                <div class="loginsignupinputDiv">
+                    <label for="orgname">Name of organization</label>
+                    <input type="text" name="orgname" id="orgname" autocomplete="off" placeholder="Name of organization"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="orgnumber">Contact of organization</label>
+                    <input type="number" name="orgnumber" id="orgnumber" autocomplete="off" placeholder="Contact number of organization"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="orgemail">Email of organization</label>
+                    <input type="email" name="orgemail" id="orgemail" autocomplete="off" placeholder="Email of organization"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="state">State of organization</label>
+                    <select name="state" id="state" required>
+                        <option value="none">Select state</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                    </select>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="district">District of organization</label>
+                    <select name="district" id="district" required>
+                        <option value="none">Select district</option>
+                        <option value="Ranchi">Ranchi</option>
+                        <option value="Bokaro">Bokaro</option>
+                        <option value="Dhanbad">Dhanbad</option>
+                        <option value="Deoghar">Deoghar</option>
+                    </select>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="orgaddress">Address of organization</label>
+                    <input type="text" name="orgaddress" id="orgaddress" autocomplete="off" placeholder="Address of organization"
+                        required>
+                </div>
+
+
+                <h3 class="h3-underline">Accused details</h3>
+
+                <div class="loginsignupinputDiv">
+                    <label for="accused">Name(s) of accused</label>
+                    <input type="text" name="accused" id="accused" autocomplete="off" placeholder="Name(s) of accused"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="accuseddesig">Designation(s) of accused</label>
+                    <input type="text" name="accuseddesig" id="accuseddesig" autocomplete="off"
+                        placeholder="Designation(s) of accused" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="accusedrel">Working relationship with accused</label>
+                    <input type="text" name="accusedrel" id="accusedrel" autocomplete="off"
+                        placeholder="Relation with the accused" required>
+                </div>
+
+                <h3 class="h3-underline">More details</h3>
+
+                <div id="iccOptionMainDiv">
+                    <p>Have you complaint to the ICC?</p>
+                    <div id="iccOptionDiv">
+                        <span>
+                            <label for="icc1">Yes</label>
+                            <input type="radio" name="icc" id="icc1" value="yes">
+                        </span>
+                        <span>
+                            <label for="icc2">No</label>
+                            <input type="radio" name="icc" id="icc2" value="no">
+                        </span>
+                    </div>
+                    <div id="iccSelectOption"></div>
+                </div>
+
+                <div class="loginsignupinputDiv">
+                    <label for="briefdesc">Brief description about the complaint</label>
+                    <textarea name="briefdesc" id="briefdesc" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="loginsignupinputDiv">
+                    Captcha verification here
+                </div>
+
+                <div class="loginsignupBtns loginsignupinputDiv">
+                    <button type="submit">Register complaint</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <%- include("../partials/jqueryandfooter") -%>

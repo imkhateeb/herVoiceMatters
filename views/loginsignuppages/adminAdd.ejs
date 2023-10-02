@@ -1,0 +1,62 @@
+<%- include("../partials/navigationleft") -%>
+    <div class="pageMainDiv width-40">
+        <h2>ADD - ADMINS</h2>
+        <div id="userSignupFormDiv">
+            <form action="/admin-signup" method="POST" enctype="multipart/form-data">
+                <div class="loginsignupinputDiv">
+                    <label for="fname">First name</label>
+                    <input type="text" name="fname" id="fname" placeholder="Enter first name" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="lname">Last name</label>
+                    <input type="text" name="lname" id="lname" autocomplete="off" placeholder="Enter Last name">
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter email" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="authid">Authorization ID of new admin</label>
+                    <input type="password" name="authid" id="authid" placeholder="Enter authorization ID" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="state">Working State</label>
+                    <select name="state" id="state" required>
+                        <option value="none">Select state</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                    </select>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="district">Working District</label>
+                    <select name="district" id="district" required>
+                        <option value="none">Select district</option>
+                        <option value="Ranchi">Ranchi</option>
+                        <option value="Bokaro">Bokaro</option>
+                        <option value="Dhanbad">Dhanbad</option>
+                        <option value="Deoghar">Deoghar</option>
+                    </select>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="secretkey">Seret Key for new admin</label>
+                    <input type="password" name="secretkey" id="secretkey" placeholder="Enter secret key for new admin" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" placeholder="Enter password" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="cpassword">Confirm password</label>
+                    <input type="password" name="cpassword" id="cpassword" autocomplete="off" placeholder="Confirm password" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="profilepicture">Give a profile picture</label>
+                    <input type="file" autocomplete="off" name="profilepicture" id="profilepicture" placeholder="Select image" required>
+                </div>
+                <div class="loginsignupBtns loginsignupinputDiv">
+                    <button type="submit">Add the Aadmin</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<%- include("../partials/jqueryandfooter") -%>

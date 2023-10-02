@@ -1,0 +1,141 @@
+#pagesContainer{
+    /* background-color: rgb(228, 226, 228); */
+    padding: 20px;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#homeHeading{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+    margin-left: -100px;
+    font-family: 'Balsamiq Sans', cursive;
+    color: rgb(51, 16, 60);
+}
+
+#homeHeading h1{
+    font-size: 3rem;
+}
+#homeHeading h2{
+    font-size: 2rem;
+}
+#homeHeading h3{
+    font-size: 1.5rem;
+}
+
+#homeHeading div{
+    display: flex;
+    align-items: center;
+}
+
+#homeHeading div h1{
+    margin-left: 10px;
+}
+
+.pageMainDiv{
+    padding: 30px;
+    margin: 20px 60px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.pageMainDiv div{
+    margin: 15px 0px;
+
+}
+.pageMainDivHeadDesc h1, p{
+    margin: 10px 0px;
+}
+.pageBtns{
+    display: flex;
+    flex-direction: column;
+}
+
+#whatStopsBtns button{
+    padding: 8px 6px;
+}
+
+
+
+/* Login Signup pages design */
+#userSignupFormDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#userSignupFormDiv form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginsignupinputDiv{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.loginsignupinputDiv label{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.loginsignupinputDiv input, select, option, textarea{
+    background: transparent;
+    border: 1px solid black;
+    padding: 10px 6px;
+    margin: 3px;
+    width: 32vw;
+    border-radius: 5px;
+    outline: none;
+    cursor: auto;
+    color: black;
+}
+.loginsignupinputDiv input::placeholder, .loginsignupinputDiv select{
+    color: rgb(79, 78, 78);
+}
+.loginsignupBtns button{
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 4px;
+    cursor: pointer;
+    background: transparent;
+    width: 32vw;
+}
+
+.loginsignupBtns button:hover{
+    border: 2px solid black;
+}
+
+
+/* complaint pages design */
+#userSignupFormDiv option{
+    background-color: black;
+}
+
+#iccOptionMainDiv input, label{
+    cursor: pointer;
+}
+#iccOptionDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+#iccOptionDiv span{
+    display: flex;
+    align-items: center;
+    margin: 4px;
+}
+#iccOptionDiv label{
+    width: 40px;
+}

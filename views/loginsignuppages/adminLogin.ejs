@@ -1,0 +1,25 @@
+<%- include("../partials/navigationleft") -%>
+    <div class="pageMainDiv width-40">
+        <h2>ADMIN - LOGIN</h2>
+        <div id="userSignupFormDiv">
+            <form action="/admin-login" method="POST">
+                <div class="loginsignupinputDiv">
+                    <label for="authid">Authorization ID</label>
+                    <input type="password" name="authid" id="authid" autocomplete="off" placeholder="Enter authorization ID" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="secretkey">Secret key</label>
+                    <input type="password" name="secretkey" id="secretkey" autocomplete="off" placeholder="Enter secret key" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="secretkey" autocomplete="off" placeholder="Enter password" required>
+                </div><div class="loginsignupBtns loginsignupinputDiv">
+                    <button type="submit">Sign up</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+            <p>Want to be part of this authority?<a href="/admin-form-fill">Fill the form</a></p>
+        </div>
+    </div>
+<%- include("../partials/jqueryandfooter") -%>

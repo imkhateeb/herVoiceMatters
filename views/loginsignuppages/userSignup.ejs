@@ -1,0 +1,50 @@
+<%- include("../partials/navigationleft") -%>
+    <div class="pageMainDiv width-40">
+        <h2>USER - SIGNUP</h2>
+        <div id="userSignupFormDiv">
+            <p><%= existingUserMessage %></p>
+            <form action="/user-signup" method="POST" enctype="multipart/form-data">
+                <div class="loginsignupinputDiv">
+                    <label for="fname">First name</label>
+                    <input type="text" name="fname" id="fname" placeholder="Enter first name" autocomplete="off"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="lname">Last name</label>
+                    <input type="text" name="lname" id="lname" autocomplete="off" placeholder="Enter Last name">
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter email" autocomplete="off" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" autocomplete="off" placeholder="Enter password"
+                        required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="cpassword">Confirm password</label>
+                    <input type="password" name="cpassword" id="cpassword" autocomplete="off"
+                        placeholder="Confirm password" required>
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="petname">Your favourite pet name</label>
+                    <input type="text" autocomplete="off" name="petname" id="petname" placeholder="Kitten">
+                </div>
+                <div class="loginsignupinputDiv">
+                    <label for="profilepicture">Upload your profile picture</label>
+                    <input type="file" autocomplete="off" name="profilepicture" id="profilepicture" placeholder="Select image" required>
+                </div>
+                <div class="loginsignupBtns loginsignupinputDiv">
+                    <button type="submit">Sign up</button>
+                    <button type="reset">Reset</button>
+                </div>
+            </form>
+            <p>Already a user? <a href="/user-login">Login here</a></p>
+        </div>
+    </div>
+    <%- include("../partials/jqueryandfooter") -%>

@@ -1,0 +1,957 @@
+<%- include("../partials/navigationleft") -%>
+
+    <div id="userPageMainHeading">
+        <div id="profilePic">
+            <img src=<%=profilePath %> alt="Admin DP">
+        </div>
+        <div id="homeHeading">
+            <h1>Hello <%= adminName %> sir,</h1>
+            <div>
+                <span>
+                    <h2>Welcome to your profile</h2>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <p style="color:rgb(246, 211, 169)">
+        <%= userPageMessage %>
+    </p>
+
+    <div id="adminDistrictHeading">
+        <h1>herVoiceMatters coordinator <%= adminDistrict %>
+        </h1>
+    </div>
+
+    <div class="userMainBigDiv" style="width: 65vw; margin: auto;">
+        <div class="btnsDiv" style="width: 30%;">
+            <button class="navBtn userBtns" id="personalDetails">Personal details</button>
+            <button class="navBtn userBtns" id="secAndPass">Privace and Security</button>
+            <button class="navBtn userBtns" id="cgovDetails">Central governemnt employee complaints in <%= adminDistrict
+                    %></button>
+            <button class="navBtn userBtns" id="sgovDetails">State governemnt employee complaints in <%= adminDistrict
+                    %></button>
+            <button class="navBtn userBtns" id="privDetails">Private employee complaints in <%= adminDistrict %>
+            </button>
+            <button class="navBtn userBtns" id="currentCases">Your current running cases</button>
+            <button class="navBtn userBtns" id="completedCases">Your completed cases</button>
+        </div>
+        <div class="userDetailsDiv" style="width: 65%">
+            <div class="userBtnDivs" id="defaultAdminDiv">
+                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, et?</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores reiciendis obcaecati quasi ipsam
+                    facilis vel perferendis, nostrum provident recusandae eius ab eaque odit, nulla quis? Blanditiis
+                    culpa temporibus nemo, incidunt, voluptatem unde adipisci doloribus illum facere facilis eveniet
+                    dolorum atque aperiam molestiae beatae dicta suscipit, eum quisquam quidem dignissimos natus? Lorem
+                    ipsum dolor sit amet, consectetur adipisicing elit. Amet quia veritatis iste consequuntur corporis.
+                    Assumenda veritatis, porro dolore id cumque eaque. Vero ipsum id dignissimos velit debitis beatae
+                    laborum odio quas labore corrupti distinctio autem perspiciatis iure omnis, officia facilis.</p>
+            </div>
+            <div style="display: none;" id="personalDetailsDiv" class="userBtnDivs">
+                <h1>Your personal details</h1>
+                <div>
+                    <h5>Name :</h5>
+                    <h4>
+                        <%= adminName %>
+                    </h4>
+                </div>
+                <div>
+                    <h5>State-in-charge :</h5>
+                    <h4>
+                        <%= adminState %>
+                    </h4>
+                </div>
+                <div>
+                    <h5>District-in-charge :</h5>
+                    <h4>
+                        <%= adminDistrict %>
+                    </h4>
+                </div>
+            </div>
+            <div style="display: none;" id="secAndPassDiv" class="userBtnDivs">
+                <h1>Security and password</h1>
+                <div>
+                    <h5>Email :</h5>
+                    <h4>
+                        <%= adminEmail %>
+                    </h4>
+                </div>
+                <div>
+                    <h5>Authorization ID :</h5>
+                    <h4>
+                        <%= adminAuthID %>
+                    </h4>
+                </div>
+
+                <button id="changePassBtn">Change password</button>
+
+                <button id="showSecretKey">Show secret key</button>
+
+
+                <div id="showSecretKeyDiv" style="display: none;">
+                    <h5>Secret key :</h5>
+                    <h4>
+                        <%= adminSecretkey %>
+                    </h4>
+                </div>
+
+                <div id="changePassDiv" class="change-pass-div" style="display: none;">
+                    <form action="/admin/change-password" method="post">
+                        <div>
+                            <label for="yourauthid">Enter your authorization ID</label>
+                            <input type="password" id="yourauthid" name="yourauthid">
+                        </div>
+                        <div>
+                            <label for="yoursecretkey">Enter your secret key</label>
+                            <input type="password" id="yoursecretkey" name="yoursecretkey">
+                        </div>
+                        <div>
+                            <label for="newpass">Enter new password</label>
+                            <input type="password" id="newpass" name="newpass">
+                        </div>
+                        <button type="submit">Change password</button>
+                    </form>
+                </div>
+            </div>
+
+            <div style="display: none;" id="cgovDetailsDiv" class="userBtnDivs">
+                <h1 style="font-size: x-large; margin: 10px auto;">Complaints by central government employees</h1>
+                <% if ( cgovComplaintDetails.length !== 0 ) { %>
+                <% cgovComplaintDetails.forEach((complaintee)=>{ %>
+                    <div class="cgov-small-divs">
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                        <div>
+                            <h5>Complaintee name :</h5>
+                            <h4>
+                                <%= complaintee.fullName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Complaintee contact :</h5>
+                            <h4>
+                                <%= complaintee.contactNo %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Complaintee E-mail :</h5>
+                            <h4>
+                                <%= complaintee.eMail %>
+                            </h4>
+                        </div>
+
+                        <div class="fullCGOVComplaintDiv" style="display: none; padding: 0px;">
+                            <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                            <div>
+                                <h5>Complaintee designation :</h5>
+                                <h4>
+                                    <%= complaintee.Designation %>
+                                </h4>
+                            </div>
+
+                            <div>
+                                <h5>Complaintee aadhar no :</h5>
+                                <h4>
+                                    <%= complaintee.aadharNo %>
+                                </h4>
+                            </div>
+
+                            <div>
+                                <h5>Complaintee state :</h5>
+                                <h4>
+                                    <%= complaintee.State %>
+                                </h4>
+                            </div>
+
+                            <div>
+                                <h5>Complaintee district :</h5>
+                                <h4>
+                                    <%= complaintee.District %>
+                                </h4>
+                            </div>
+                            <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Organization details</h2>
+                            <div>
+                                <h5>Ministry in which she is working :</h5>
+                                <h4>
+                                    <%= complaintee.organizationName %>
+                                </h4>
+                            </div>
+                            <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                            <div>
+                                <h5>Name(s) of accused :</h5>
+                                <h4>
+                                    <%= complaintee.accusedName %>
+                                </h4>
+                            </div>
+                            <div>
+                                <h5>Department(s) of accused :</h5>
+                                <h4>
+                                    <%= complaintee.accusedDepartment %>
+                                </h4>
+                            </div>
+                            <div>
+                                <h5>Designation(s) of accused :</h5>
+                                <h4>
+                                    <%= complaintee.accusedDesignation %>
+                                </h4>
+                            </div>
+
+                            <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+
+                            <div>
+                                <h5>Her relation with the accused :</h5>
+                                <h4>
+                                    <%= complaintee.accusedRelation %>
+                                </h4>
+                            </div>
+                            <div>
+                                <h5>Does she complaint to ICC :</h5>
+                                <h4>
+                                    <%= complaintee.complaintToICC %>
+                                </h4>
+                            </div>
+                            <div class="complaintBrief">
+                                <h5>Brief about the complaint :</h5>
+                                <p>
+                                    <%= complaintee.complaintDescription %>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="complainteeBtns">
+                            <button class="cgov-small-divsBtns">Show more</button>
+                            <form action="/admin/case-accepted" method="post">
+                                <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                                <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                                <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                                <input type="hidden" name="ctype" value="Cgov">
+                                <button type="submit">Accept the case</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% })} %>
+            </div>
+            <div style="display: none;" id="sgovDetailsDiv" class="userBtnDivs">
+                <h1 style="font-size: x-large; margin: 10px auto;">Complaints by state government employees</h1>
+                <% if(sgovComplaintDetails.length !== 0 ){ %>
+                <% sgovComplaintDetails.forEach((complaintee)=>{ %>
+                <div class="sgov-small-divs">
+                    <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                    <div>
+                        <h5>Complaintee name :</h5>
+                        <h4>
+                            <%= complaintee.fullName %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee contact :</h5>
+                        <h4>
+                            <%= complaintee.contactNo %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee E-mail :</h5>
+                        <h4>
+                            <%= complaintee.eMail %>
+                        </h4>
+                    </div>
+
+                    <div class="fullSGOVComplaintDiv" style="display: none; padding: 0px;">
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                        <div>
+                            <h5>Complaintee designation :</h5>
+                            <h4>
+                                <%= complaintee.Designation %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee aadhar no :</h5>
+                            <h4>
+                                <%= complaintee.aadharNo %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee state :</h5>
+                            <h4>
+                                <%= complaintee.State %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee district :</h5>
+                            <h4>
+                                <%= complaintee.District %>
+                            </h4>
+                        </div>
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                        <div>
+                            <h5>Name(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Department(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDepartment %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Designation(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDesignation %>
+                            </h4>
+                        </div>
+
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+
+                        <div>
+                            <h5>Her relation with the accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedRelation %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Does she complaint to ICC :</h5>
+                            <h4>
+                                <%= complaintee.complaintToICC %>
+                            </h4>
+                        </div>
+                        <div class="complaintBrief">
+                            <h5>Brief about the complaint :</h5>
+                            <p>
+                                <%= complaintee.complaintDescription %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="complainteeBtns">
+                        <button class="sgov-small-divsBtns">Show more</button>
+                        <form action="/admin/case-accepted" method="post">
+                            <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                            <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                            <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                            <input type="hidden" name="ctype" value="Sgov">
+                            <button type="submit">Accept the case</button>
+                        </form>
+                    </div>
+                </div>
+                <% })} %>
+            </div>
+            <div style="display: none;" id="privDetailsDiv" class="userBtnDivs">
+                <h1 style="font-size: x-large; margin: 10px auto;">Complaints by Private employees</h1>
+                <% if(privComplaintDetails.length !== 0){ %>
+                <% privComplaintDetails.forEach((complaintee)=>{ %>
+                <div class="priv-small-divs">
+                    <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                    <div>
+                        <h5>Complaintee name :</h5>
+                        <h4>
+                            <%= complaintee.fullName %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee contact :</h5>
+                        <h4>
+                            <%= complaintee.contactNo %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee E-mail :</h5>
+                        <h4>
+                            <%= complaintee.eMail %>
+                        </h4>
+                    </div>
+
+                    <div class="fullPRIVComplaintDiv" style="display: none; padding: 0px;">
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                        <div>
+                            <h5>Complaintee designation :</h5>
+                            <h4>
+                                <%= complaintee.Designation %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee aadhar no :</h5>
+                            <h4>
+                                <%= complaintee.aadharNo %>
+                            </h4>
+                        </div>
+
+                        
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Organization details</h2>
+                        <div>
+                            <h5>Organization name:</h5>
+                            <h4>
+                                <%= complaintee.organizationName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Organization contact:</h5>
+                            <h4>
+                                <%= complaintee.organizationContact %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Oganization E-mail:</h5>
+                            <h4>
+                                <%= complaintee.organizationEmail %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Working state :</h5>
+                            <h4>
+                                <%= complaintee.State %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Working district :</h5>
+                            <h4>
+                                <%= complaintee.District %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Detailed address:</h5>
+                            <h4>
+                                <%= complaintee.organizationAddress %>
+                            </h4>
+                        </div>
+                        
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                        <div>
+                            <h5>Name(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Designation(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDesignation %>
+                            </h4>
+                        </div>
+
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+
+                        <div>
+                            <h5>Her relation with the accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedRelation %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Does she complaint to ICC :</h5>
+                            <h4>
+                                <%= complaintee.complaintToICC %>
+                            </h4>
+                        </div>
+                        <div class="complaintBrief">
+                            <h5>Brief about the complaint :</h5>
+                            <p>
+                                <%= complaintee.complaintDescription %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="complainteeBtns">
+                        <button class="priv-small-divsBtns">Show more</button>
+                        <form action="/admin/case-accepted" method="post">
+                            <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                            <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                            <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                            <input type="hidden" name="ctype" value="Priv">
+                            <button type="submit">Accept the case</button>
+                        </form>
+                    </div>
+                </div>
+                <% })} %>
+            </div>
+
+            <!-- Current details -->
+            <div style="display: none;" id="currentCasesDiv" class="userBtnDivs">
+                <div class="currentCaseDivType">
+                    <h1 style="font-size: x-large; margin: 10px auto;">Complaints by central government employees</h1>
+                    <% cgovComplaintDetail.forEach((complaintee)=>{ %>
+                        <div class="cgov-small-divs">
+                            <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                            <div>
+                                <h5>Complaintee name :</h5>
+                                <h4>
+                                    <%= complaintee.fullName %>
+                                </h4>
+                            </div>
+                            <div>
+                                <h5>Complaintee contact :</h5>
+                                <h4>
+                                    <%= complaintee.contactNo %>
+                                </h4>
+                            </div>
+                            <div>
+                                <h5>Complaintee E-mail :</h5>
+                                <h4>
+                                    <%= complaintee.eMail %>
+                                </h4>
+                            </div>
+    
+                            <div class="fullCGOVComplaintDiv" style="display: none; padding: 0px;">
+                                <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                                <div>
+                                    <h5>Complaintee designation :</h5>
+                                    <h4>
+                                        <%= complaintee.Designation %>
+                                    </h4>
+                                </div>
+    
+                                <div>
+                                    <h5>Complaintee aadhar no :</h5>
+                                    <h4>
+                                        <%= complaintee.aadharNo %>
+                                    </h4>
+                                </div>
+    
+                                <div>
+                                    <h5>Complaintee state :</h5>
+                                    <h4>
+                                        <%= complaintee.State %>
+                                    </h4>
+                                </div>
+    
+                                <div>
+                                    <h5>Complaintee district :</h5>
+                                    <h4>
+                                        <%= complaintee.District %>
+                                    </h4>
+                                </div>
+                                <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Organization details</h2>
+                                <div>
+                                    <h5>Ministry in which she is working :</h5>
+                                    <h4>
+                                        <%= complaintee.organizationName %>
+                                    </h4>
+                                </div>
+                                <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                                <div>
+                                    <h5>Name(s) of accused :</h5>
+                                    <h4>
+                                        <%= complaintee.accusedName %>
+                                    </h4>
+                                </div>
+                                <div>
+                                    <h5>Department(s) of accused :</h5>
+                                    <h4>
+                                        <%= complaintee.accusedDepartment %>
+                                    </h4>
+                                </div>
+                                <div>
+                                    <h5>Designation(s) of accused :</h5>
+                                    <h4>
+                                        <%= complaintee.accusedDesignation %>
+                                    </h4>
+                                </div>
+    
+                                <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+    
+                                <div>
+                                    <h5>Her relation with the accused :</h5>
+                                    <h4>
+                                        <%= complaintee.accusedRelation %>
+                                    </h4>
+                                </div>
+                                <div>
+                                    <h5>Does she complaint to ICC :</h5>
+                                    <h4>
+                                        <%= complaintee.complaintToICC %>
+                                    </h4>
+                                </div>
+                                <div class="complaintBrief">
+                                    <h5>Brief about the complaint :</h5>
+                                    <p>
+                                        <%= complaintee.complaintDescription %>
+                                    </p>
+                                </div>
+                            </div>
+    
+                            <div id="complainteeBtns">
+                                <button class="cgov-small-divsBtns">Show more</button>
+                                <form  method="post">
+                                    <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                                    <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                                    <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                                    <input type="hidden" name="ctype" value="Cgov">
+                                    <button type="submit">Accept the case</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+
+                <div class="currentCaseDivType">
+<!-- Paste your SGOV code here -->
+<h1 style="font-size: x-large; margin: 10px auto;">Complaints by state government employees</h1>
+
+                <% sgovComplaintDetail.forEach((complaintee)=>{ %>
+                <div class="sgov-small-divs">
+                    <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                    <div>
+                        <h5>Complaintee name :</h5>
+                        <h4>
+                            <%= complaintee.fullName %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee contact :</h5>
+                        <h4>
+                            <%= complaintee.contactNo %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee E-mail :</h5>
+                        <h4>
+                            <%= complaintee.eMail %>
+                        </h4>
+                    </div>
+
+                    <div class="fullSGOVComplaintDiv" style="display: none; padding: 0px;">
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                        <div>
+                            <h5>Complaintee designation :</h5>
+                            <h4>
+                                <%= complaintee.Designation %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee aadhar no :</h5>
+                            <h4>
+                                <%= complaintee.aadharNo %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee state :</h5>
+                            <h4>
+                                <%= complaintee.State %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee district :</h5>
+                            <h4>
+                                <%= complaintee.District %>
+                            </h4>
+                        </div>
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                        <div>
+                            <h5>Name(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Department(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDepartment %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Designation(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDesignation %>
+                            </h4>
+                        </div>
+
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+
+                        <div>
+                            <h5>Her relation with the accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedRelation %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Does she complaint to ICC :</h5>
+                            <h4>
+                                <%= complaintee.complaintToICC %>
+                            </h4>
+                        </div>
+                        <div class="complaintBrief">
+                            <h5>Brief about the complaint :</h5>
+                            <p>
+                                <%= complaintee.complaintDescription %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="complainteeBtns">
+                        <button class="sgov-small-divsBtns">Show more</button>
+                        <form method="post">
+                            <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                            <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                            <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                            <input type="hidden" name="ctype" value="Sgov">
+                            <button type="submit">Accept the case</button>
+                        </form>
+                    </div>
+                </div>
+                <% }) %>
+                </div>
+
+                <div class="currentCaseDivType">
+                    <!-- Copy your PRIV code here -->
+                    <h1 style="font-size: x-large; margin: 10px auto;">Complaints by Private employees</h1>
+
+                <% privComplaintDetail.forEach((complaintee)=>{ %>
+                <div class="priv-small-divs">
+                    <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Name and contact details</h2>
+                    <div>
+                        <h5>Complaintee name :</h5>
+                        <h4>
+                            <%= complaintee.fullName %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee contact :</h5>
+                        <h4>
+                            <%= complaintee.contactNo %>
+                        </h4>
+                    </div>
+                    <div>
+                        <h5>Complaintee E-mail :</h5>
+                        <h4>
+                            <%= complaintee.eMail %>
+                        </h4>
+                    </div>
+
+                    <div class="fullPRIVComplaintDiv" style="display: none; padding: 0px;">
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Personal details</h2>
+                        <div>
+                            <h5>Complaintee designation :</h5>
+                            <h4>
+                                <%= complaintee.Designation %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Complaintee aadhar no :</h5>
+                            <h4>
+                                <%= complaintee.aadharNo %>
+                            </h4>
+                        </div>
+
+                        
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Organization details</h2>
+                        <div>
+                            <h5>Organization name:</h5>
+                            <h4>
+                                <%= complaintee.organizationName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Organization contact:</h5>
+                            <h4>
+                                <%= complaintee.organizationContact %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Oganization E-mail:</h5>
+                            <h4>
+                                <%= complaintee.organizationEmail %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Working state :</h5>
+                            <h4>
+                                <%= complaintee.State %>
+                            </h4>
+                        </div>
+
+                        <div>
+                            <h5>Working district :</h5>
+                            <h4>
+                                <%= complaintee.District %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Detailed address:</h5>
+                            <h4>
+                                <%= complaintee.organizationAddress %>
+                            </h4>
+                        </div>
+                        
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">Accused details</h2>
+                        <div>
+                            <h5>Name(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedName %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Designation(s) of accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedDesignation %>
+                            </h4>
+                        </div>
+
+                        <h2 style="font-size: large; margin: 20px auto; text-decoration: underline;">More details</h2>
+
+                        <div>
+                            <h5>Her relation with the accused :</h5>
+                            <h4>
+                                <%= complaintee.accusedRelation %>
+                            </h4>
+                        </div>
+                        <div>
+                            <h5>Does she complaint to ICC :</h5>
+                            <h4>
+                                <%= complaintee.complaintToICC %>
+                            </h4>
+                        </div>
+                        <div class="complaintBrief">
+                            <h5>Brief about the complaint :</h5>
+                            <p>
+                                <%= complaintee.complaintDescription %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="complainteeBtns">
+                        <button class="priv-small-divsBtns">Show more</button>
+                        <form method="post">
+                            <input type="hidden" name="authid" value=<%= adminAuthID %>>
+                            <input type="hidden" name="secretkey" value=<%= adminSecretkey %>>
+                            <input type="hidden" name="complaintid" value=<%= complaintee._id %>>
+                            <input type="hidden" name="ctype" value="Priv">
+                            <button type="submit">Accept the case</button>
+                        </form>
+                    </div>
+                </div>
+                <% }) %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $("#toggleComplaintType").on("click", (e) => {
+            $("#complaintToggleDiv").slideToggle();
+        })
+        $("#toggleLoginType").on("click", (e) => {
+            $("#toggleLoginDiv").slideToggle();
+        })
+
+        $("#personalDetails").on("click", (e) => {
+            $("#defaultAdminDiv").css("display", "none");
+            $("#secAndPassDiv").css("display", "none");
+            $("#cgovDetailsDiv").css("display", "none");
+            $("#privDetailsDiv").css("display", "none");
+            $("#sgovDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").css("display", "none");
+            $("#personalDetailsDiv").slideDown(300);
+        })
+
+        $("#secAndPass").on("click", (e) => {
+            $("#defaultAdminDiv").css("display", "none");
+            $("#personalDetailsDiv").css("display", "none");
+            $("#cgovDetailsDiv").css("display", "none");
+            $("#privDetailsDiv").css("display", "none");
+            $("#sgovDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").css("display", "none");
+            $("#secAndPassDiv").slideDown(300);
+        })
+
+        $("#cgovDetails").on("click", (e) => {
+            $("#defaultAdminDiv").css("display", "none");
+            $("#secAndPassDiv").css("display", "none");
+            $("#personalDetailsDiv").css("display", "none");
+            $("#privDetailsDiv").css("display", "none");
+            $("#sgovDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").css("display", "none");
+            $("#cgovDetailsDiv").slideDown(300);
+        });
+
+        $("#sgovDetails").on("click", (e) => {
+            $("#defaultAdminDiv").css("display", "none");
+            $("#secAndPassDiv").css("display", "none");
+            $("#personalDetailsDiv").css("display", "none");
+            $("#privDetailsDiv").css("display", "none");
+            $("#cgovDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").css("display", "none");
+            $("#sgovDetailsDiv").slideDown(300);
+        });
+
+        $("#privDetails").on("click", (e) => {
+            $("#defaultAdminDiv").css("display", "none");
+            $("#secAndPassDiv").css("display", "none");
+            $("#personalDetailsDiv").css("display", "none");
+            $("#sgovDetailsDiv").css("display", "none");
+            $("#cgovDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").css("display", "none");
+            $("#privDetailsDiv").slideDown(300);
+        });
+
+        $("#currentCases").on("click", (e)=>{
+            $("#defaultAdminDiv").css("display", "none");
+            $("#secAndPassDiv").css("display", "none");
+            $("#personalDetailsDiv").css("display", "none");
+            $("#sgovDetailsDiv").css("display", "none");
+            $("#cgovDetailsDiv").css("display", "none");
+            $("#privDetailsDiv").css("display", "none");
+            $("#currentCasesDiv").slideDown(300);
+        })
+
+        $("#changePassBtn").on("click", (e) => {
+            $("#showSecretKeyDiv").css("display", "none");
+            $("#changePassDiv").slideToggle(300);
+        })
+        $("#showSecretKey").on("click", (e) => {
+            $("#changePassDiv").css("display", "none");
+            $("#showSecretKeyDiv").slideToggle(300);
+        })
+
+        for (let i = 0; i < $(".cgov-small-divsBtns").length; i++) {
+            $(".cgov-small-divsBtns").eq(i).on("click", () => {
+                $(".fullCGOVComplaintDiv").eq(i).slideToggle(300);
+                let buttonText = $(".cgov-small-divsBtns").eq(i).text();
+                if (buttonText === "show less") {
+                    $(".cgov-small-divsBtns").eq(i).text("show more");
+                } else {
+                    $(".cgov-small-divsBtns").eq(i).text("show less");
+                }
+            })
+        }
+
+        for (let i = 0; i < $(".sgov-small-divsBtns").length; i++) {
+            $(".sgov-small-divsBtns").eq(i).on("click", () => {
+                $(".fullSGOVComplaintDiv").eq(i).slideToggle(300);
+                let buttonText = $(".sgov-small-divsBtns").eq(i).text();
+                if (buttonText === "show less") {
+                    $(".sgov-small-divsBtns").eq(i).text("show more");
+                } else {
+                    $(".sgov-small-divsBtns").eq(i).text("show less");
+                }
+            })
+        }
+
+        for (let i = 0; i < $(".priv-small-divsBtns").length; i++) {
+            $(".priv-small-divsBtns").eq(i).on("click", () => {
+                $(".fullPRIVComplaintDiv").eq(i).slideToggle(300);
+                let buttonText = $(".priv-small-divsBtns").eq(i).text();
+                if (buttonText === "show less") {
+                    $(".priv-small-divsBtns").eq(i).text("show more");
+                } else {
+                    $(".priv-small-divsBtns").eq(i).text("show less");
+                }
+            })
+        }
+
+    </script>
+    </body>
+
+    </html>
